@@ -3,5 +3,7 @@ MAINTAINER Adrien Maurel <amaurel90@gmail.com>
 RUN apk --update --no-cache update \
 	&& apk --update --no-cache add openssh-client
 RUN mkdir /backup /certs	
+COPY cron_params /var/spool/cron/crontabs/root
 COPY start.sh start.sh	
-ENTRYPOINT ["/bin/sh","start.sh"]
+RUN chmod +x start.sh
+CMD crond -l 2 -f
