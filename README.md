@@ -9,6 +9,5 @@ PRIV_KEY_NAME = name_of_privatekey_to_use - default = priv.key
 DISTANT_HOST_PATH = Path to backup in ssh style (user@host:path_to_backup)
 
 #TODO
-Add cron like 
-Add possibility to connect via password 
-
+Give the possibility to change when backup is done currently every day 
+Add possibility to connect via password
