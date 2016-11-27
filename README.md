@@ -9,9 +9,9 @@ docker run -t -i -v [$(pwd)/certs]:/certs -v [$(pwd)/folder_to_backup]:/backup -
 
 * DISTANT_HOST_PATH = Host connection string in ssh style (user@host) or ftp style (user:pass@host)
 * TYPE = {SCP,FTP,FTP_MIRROR} depend on how you want to save 
-** SCP => Just copy the backup archive to the target location
-** FTP => Just copy the backup archive to the target location
-** FTP_MIRROR => Mirror /save folder to the target path_to_backup ( therefore keeping only one backup for the moment)
+    * SCP => Just copy the backup archive to the target location
+    * FTP => Just copy the backup archive to the target location
+    * FTP_MIRROR => Mirror /save folder to the target path_to_backup ( therefore keeping only one backup for the moment)
 * BACKUP_PATH = where to back ( from scp/ftp connection default location)
 * PASS = SSH Pass to connect to the target folder ( only for scp connection)
 * PRIV_KEY_NAME = name_of_privatekey_to_use - default = priv.key ( only for scp connection)
