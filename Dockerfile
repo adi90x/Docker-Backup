@@ -6,7 +6,8 @@ RUN apk --update --no-cache update \
 	&& apk --update --no-cache add lftp 
 RUN mkdir /backup /certs /save ~/.lftp
 RUN echo "set ssl:verify-certificate no" > ~/.lftp/rc	
-COPY cron_params /var/spool/cron/crontabs/root
-COPY start.sh start.sh	
+COPY start.sh start.sh
+COPY backup.sh backup.sh
 RUN chmod +x start.sh
-CMD crond -l 2 -f
+RUN chmod +x backup.sh
+CMD ["/bin/sh", "start.sh"]
