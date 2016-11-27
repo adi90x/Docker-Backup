@@ -1,11 +1,11 @@
-#/bin/sh
-tar -czf backup_`date +%Y%m%d_%H%M%S`.tar.gz -C / backup
+#!/bin/sh
 
-backup=$(ls -p -t backup*.tar.gz | head -1) 
+tar -czvf backup_`date +%Y%m%d_%H%M%S`.tar.gz -C / backup >> tar.log
 
- if [ -z $PRIV_KEY_NAME ]; then PRIV_KEY_NAME=priv.key ;  fi 
+backup=$(ls -p -t backup*.tar.gz | head -1)
 
-scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -i /certs/$PRIV_KEY_NAME  $backup $DISTANT_HOST_PATH/$backup
+: ${PRIV_KEY_NAME=priv.key}
 
+sshpass -p "$PASS" scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -i /certs/$PRIV_KEY_NAME  $backup $DISTANT_HOST_PATH/$backup
 
 rm $backup
