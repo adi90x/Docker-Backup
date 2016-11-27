@@ -1,13 +1,13 @@
 #!/bin/sh
 
-tar -czvf backup_`date +%Y%m%d_%H%M%S`.tar.gz -C / backup >> tar.log
+tar -czvf save/backup_`date +%Y%m%d_%H%M%S`.tar.gz -C / backup >> tar.log
 
-backup=$(ls -p -t backup*.tar.gz | head -1)
+backup=$(ls -p -t save/backup*.tar.gz | head -1)
 
 : ${PRIV_KEY_NAME=priv.key}
 
 if [ "$TYPE"  = "SCP" ]
- then sshpass -p "$PASS" scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -i /certs/$PRIV_KEY_NAME  $backup $DISTANT_HOST_PATH/$backup
+ then sshpass -p "$PASS" scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -i /certs/$PRIV_KEY_NAME $backup $DISTANT_HOST_PATH:$BACKUP_PATH/$backup
 fi
 
 if [ "$TYPE"  = "FTP" ]
