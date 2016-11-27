@@ -7,7 +7,7 @@ backup=$(ls -p -t save/backup*.tar.gz | head -1)
 : ${PRIV_KEY_NAME=priv.key}
 
 if [ "$TYPE"  = "SCP" ]
- then sshpass -p "$PASS" scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -i /certs/$PRIV_KEY_NAME $backup $DISTANT_HOST_PATH:$BACKUP_PATH/$backup
+ then sshpass -p "$PASS" scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -i /certs/$PRIV_KEY_NAME save/$backup $DISTANT_HOST_PATH:$BACKUP_PATH/$backup
 fi
 
 if [ "$TYPE"  = "FTP" ]
