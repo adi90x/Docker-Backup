@@ -1,12 +1,13 @@
 # Docker-Backup
+
 Docker Container to backup host data to another server
 
-#Usage
+# Usage
 
 ```
 docker run -t -i -v [$(pwd)/certs]:/certs -v [$(pwd)/folder_to_backup]:/backup -e TYPE={SCP,FTP,FTP_MIRROR} -e CRON=["* * * * *"] -e PASS=[SSH_PASS] -e PRIV_KEY_NAME=[name_of_privatekey] -e DISTANT_HOST_PATH=[user@host:path_to_backup] --name docker-backup adi90x/docker-backup
 ```
-#Parameters
+# Parameters
 
 * DISTANT_HOST_PATH = Host connection string in ssh style (user@host) or ftp style (user:pass@host)
 * TYPE = {SCP,FTP,FTP_MIRROR} depend on how you want to save 
@@ -18,10 +19,11 @@ docker run -t -i -v [$(pwd)/certs]:/certs -v [$(pwd)/folder_to_backup]:/backup -
 * PRIV_KEY_NAME = name_of_privatekey_to_use - default = priv.key ( only for scp connection)
 * CRON = Cron like parameters to choose when to backup (ex : "* * * * *" every minutes) - default = Everyday at midnight
 
-#TODO
+# TODO
+
 * Maybe add rsync 
 
-#Any Help welcome ! 
+# Any Help welcome ! 
 * Just git clone master or any dev branch and send a pull request !
 ````
 git clone https://adi90@bitbucket.org/adi90/docker-backup.git
