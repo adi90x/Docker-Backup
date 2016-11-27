@@ -11,7 +11,7 @@ then sshpass -p "$PASS" scp -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyC
 fi
 
 if [ "$TYPE"  = "FTP" ]
- then  lftp ftp://$DISTANT_HOST_PATH -e "put  /save/$backup $BACKUP_PATH/$backup;exit"
+ then  lftp ftp://$DISTANT_HOST_PATH -e "put -O $BACKUP_PATH/ /save/$backup; bye"
 fi
 
 if [ "$TYPE"  = "FTP_MIRROR" ]
