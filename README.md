@@ -28,5 +28,5 @@ docker run -t -i -v [$(pwd)/certs]:/certs -v [$(pwd)/folder_to_backup]:/backup -
 
 * Just git clone master or any dev branch and send a pull request !
 ````
-git clone https://adi90@bitbucket.org/adi90/docker-backup.git
+git clone https://github.com/adi90x/Docker-Backup.git
 ````
